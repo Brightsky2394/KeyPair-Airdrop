@@ -10,13 +10,15 @@
   This function enable the following:
 
   1. Creation of a new wallet called myWallet from the privateKey
-     Code:
-     const myWallet = await Keypair.fromSecretKey(privateKey)
+     ```
+         const myWallet = await Keypair.fromSecretKey(privateKey)
+     ```
   2. Get the wallet balance
-     Code:
-     const walletBalance = await connection.getBalance(
-     new PublicKey(newPair.publicKey);
-     )
+     ```
+        const walletBalance = await connection.getBalance(
+        new PublicKey(newPair.publicKey);
+        )
+     ```
 
   Code:
   const getWalletBalance = async () => {
