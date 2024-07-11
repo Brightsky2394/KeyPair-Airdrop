@@ -21,21 +21,24 @@
      ```
 
   Code:
-  const getWalletBalance = async () => {
-  try {
-  console.log(`Connection object is :`, connection);
 
-                // Make wallet from private key and get its balance
-                const myWallet = await Keypair.fromSecretKey(privateKey);
-                const walletBalance = await connection.getBalance(
-                    new PublicKey(newPair.publicKey)
-                )
-                console.log(`Wallet Balance: ${Number(walletBalance) / LAMPORTS_PER_SOL} SOL`);
-            } catch (err) {
-                console.error(err);
+  ```
+    const getWalletBalance = async () => {
+    try {
+    console.log(`Connection object is :`, connection);
+
+                    // Make wallet from private key and get its balance
+                    const myWallet = await Keypair.fromSecretKey(privateKey);
+                    const walletBalance = await connection.getBalance(
+                        new PublicKey(newPair.publicKey)
+                    )
+                    console.log(`Wallet Balance: ${Number(walletBalance) / LAMPORTS_PER_SOL} SOL`);
+                } catch (err) {
+                    console.error(err);
+                }
+
             }
-
-        }
+  ```
 
 - Declare and initialize a function named "airDropSol" which does the following:
 
@@ -51,32 +54,38 @@
      await connection.confirmTransaction(fromAirDropSignature);
 
   Code:
-  const airDropSol = async () => {
-  try {
-  const myWallet = await Keypair.fromSecretKey(privateKey);
 
-                // require for some airdrop to the wallet
-                console.log("Airdropping some SOL to my wallet");
-                const fromAirDropSignature = await connection.requestAirdrop(
-                    new PublicKey(myWallet.publicKey),
-                    2 * LAMPORTS_PER_SOL
-                )
-                await connection.confirmTransaction(fromAirDropSignature);
+  ```
+    const airDropSol = async () => {
+    try {
+    const myWallet = await Keypair.fromSecretKey(privateKey);
 
-            } catch (err) {
-                console.error(err);
+                    // require for some airdrop to the wallet
+                    console.log("Airdropping some SOL to my wallet");
+                    const fromAirDropSignature = await connection.requestAirdrop(
+                        new PublicKey(myWallet.publicKey),
+                        2 * LAMPORTS_PER_SOL
+                    )
+                    await connection.confirmTransaction(fromAirDropSignature);
+
+                } catch (err) {
+                    console.error(err);
+                }
             }
-        }
+  ```
 
 - Declare and initialize mainFunction which display the wallet balance before and after airdropping of SOL
   code:
-  async function mainFunction() {
-  getWalletBalance();
-  airDropSol();
-  getWalletBalance();
-  }
+  ```
+        async function mainFunction() {
+        getWalletBalance();
+        airDropSol();
+        getWalletBalance();
+        }
+  ```
 
-- MainFunction is invoked or called
+```
+-  MainFunction is invoked or called
 
 ## Testing:
 
@@ -85,3 +94,4 @@ Run the command `node index.js` on the CLI(Command Line Interface) or Terminal t
 ## Author:
 
 Sikiru Yaya (skycode)
+```
