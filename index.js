@@ -11,7 +11,7 @@ const {
 const newPair = new Keypair();
 
 // Extract public and private key from the keypair
-const publicKey = new PublicKey(newPair._keypair.publicKey);
+const publicKey = new PublicKey(newPair._keypair.publicKey).toString();
 const privateKey = newPair._keypair.secretKey;
 
 // create Devnet connection
@@ -41,7 +41,7 @@ const airDropSol = async () => {
     try {
         const myWallet = await Keypair.fromSecretKey(privateKey);
 
-        // require for some airdrop to the wallet
+        // request airdrop of 2 SOL to the wallet
         console.log("Airdropping some SOL to my wallet");
         const fromAirDropSignature = await connection.requestAirdrop(
             new PublicKey(myWallet.publicKey),
